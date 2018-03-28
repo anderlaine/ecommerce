@@ -6,6 +6,7 @@ use Rain\Tpl;
 class Page {
 	
 	private $tpl;
+	private $log=[];
 	private $options = [];
 	private $defaults = [
 		"data" =>[]
@@ -27,13 +28,11 @@ class Page {
 		$this->tpl = new Tpl;
 		
 		$this->setData($this->options["data"]);
-		
 		$this->tpl->draw("header");
 		
 	}
 	
 	private function setData($data = array()){
-		print_r (func_get_args());exit;
 		foreach ($data as $key => $value) {
 			$this->tpl->assign($key,$value);
 		}
@@ -42,7 +41,6 @@ class Page {
 	public function setTpl($name, $data = array(), $returnHTML = false)
 	{
 		$this->setData($data);
-		
 		return $this->tpl->draw($name,$returnHTML);
 	}
 	

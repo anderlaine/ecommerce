@@ -75,6 +75,7 @@ class Tpl {
      */
     public function draw($templateFilePath, $toString = FALSE) {
         extract($this->var);
+		//var_dump (func_get_args());exit;
         ob_start();
         require $this->checkTemplate($templateFilePath);
         $html = ob_get_clean();
